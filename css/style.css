@@ -1,16 +1,20 @@
 @import "https://unpkg.com/open-props/easings.min.css";
+@import "https://unpkg.com/open-props/animations.min.css";
+
+
 
 :root {
-    /* spotify colors*/
+    /* Spotify colors */
     --spotify-green: #1ed760;
     --spotify-black: #121212;
     --spotify-white: #ffffff;
     --spotify-grey: #b3b3b3;
     --spotify-darkGrey: #222222;
+
+        
 }
 
-/* reset */
-
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -25,55 +29,100 @@ svg {
     height: auto;
 }
 
-/* global page styles */
-
-html {}
-
-/* center everything */
-
-body {}
-
-/*
-    Object: Button reset
-    ---
-    Small button reset object
-*/
-
-.button-reset {
-    border: none;
+/* Global page styles */
+body {
+    display: grid;
+    place-items: center; /* Centers the grid item (card) both vertically and horizontally */
+    font-family: "Manrope", sans-serif;
+    min-height: 100vh;
+    background-color: var(--spotify-darkGrey); /* Background color */
+    color: var(--spotify-white); /* Text color */
     margin: 0;
-    padding: 0;
-    width: auto;
-    overflow: visible;
-    background: transparent;
-
-    /* inherit font & color from ancestor */
-    color: inherit;
-    font: inherit;
-
-    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-    line-height: normal;
-
-    /* Corrects font smoothing for webkit */
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
-
-    /* Corrects inability to style clickable `input` types in iOS */
-    -webkit-appearance: none;
 }
 
-/*
-    Toggle button
-*/
+/* Centering the album card using grid */
+.album {
+    display: grid;
+    gap: 1rem;
+    background-color: var(--spotify-black);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    /* text-align: center; */
+}
 
-/*
-    Album
-*/
+/* Album header styles */
+.album__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    margin-top: 1rem;
+}
 
-/*
-    Utitlities
-*/
+.album__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--spotify-green);
+    grid-column: 1;
+    grid-row: 1;
+}
 
-.color-grey {
+.album__artist {
     color: var(--spotify-grey);
+    font-size: 1rem;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+/* Button reset */
+.button-reset {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+
+}
+
+/* Toggle button styles */
+.album__action {
+    grid-column: 2;
+    grid-row: 1 /span 2;
+    display: grid;
+    place-items: center;
+}
+
+
+
+.toggle__icon {
+    width: 24px;
+    height: 24px;
+    transition:all 1s ease-in-out ;
+    /* animation: var(--animation-spin) forwards; */
+}
+
+.added .icon--add {
+opacity: 0; 
+rotate: 90deg;
+}
+
+.added .icon--check {
+opacity: 1;}
+
+.icon--add{
+    grid-row: 1;
+    grid-column: 1;
+
+}
+.icon--check{
+    color: var(--spotify-green);
+    grid-row: 1;
+    grid-column: 1;
+    opacity: 0;
+    /* opacity: 0; */
+ 
 }
